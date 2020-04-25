@@ -25,7 +25,7 @@ $(document).ready(function() {
 
     /* hide contact form */
     $("button").click(function() {
-        $("#contact").hide();
+        $("#contact").hide("slow");
         $("#thanks").show();
     });
 
