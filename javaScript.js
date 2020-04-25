@@ -61,12 +61,6 @@ $(document).ready(function() {
         };
     };
 
-     /* hide contact form */
-    $("#button").click(function() {
-        $("#contact").hide();
-        $("#thanks").show();
-    });
-
     // Email web service 
 	var unirest = require("unirest");
 
@@ -93,10 +87,6 @@ $(document).ready(function() {
 		console.log(res.body);
     });
 });
-    
-
-
-    /* Gets information */
 	
 
 	
