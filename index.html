@@ -4,65 +4,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!--Additional JS Library for turning pages http://www.turnjs.com/-->
 <script type="text/javascript" src="turn.min.js"></script>
-<!--Turn.js-->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#magazine').turn({
-			display: 'double',
-			acceleration: true,
-			autoCenter: true,
-			gradients: !$.isTouch,
-			elevation:50,
-			when: {
-				turned: function(e, page) {
-				/*console.log('Current view: ', $(this).turn('view'));*/
-				}
-			}
-		});
-	});
-	/*checks if left or right arrow key*/
-	$(window).bind('keydown', function(e){
-		
-		if (e.keyCode==37)
-			$('#magazine').turn('previous');
-		else if (e.keyCode==39)
-			$('#magazine').turn('next');
-			
-	});
-	/* added */
-	$("button").click(function(){
-		var resName = $("#response-name").val();
-		var email = $("#response-email").val();
-		//$("#response-area").append(r);
-		loadresponse(resName);
-		console.log("name:" + resName);
-		$("#response-name").val("");
-		$("#response-email").val("");
-	});
+<!--Link JS-->
+<script src="javaScript.js"></script>
 
-	function loadresponse(response){
-		
-		var responseInput = {
-			"text": resName }
-		}
-		$.ajax({
-			url: "http://localhost:5000/echo/",
-			type: "POST",
-			data: JSON.stringify(responseInput),
-			contentType: "application/json",
-			success: displayResponse
-	});
-
-	function displayResponse(data)
-	{
-		console.log("success!"+ data);
-		for(key in data){
-		//console.log(key+" "+data[key]);
-		$("#response-area").append(key+" "+data[key]+"<br>");
-	};
-};
-
-</script>
 <style>@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');</style>
 <style type="text/css">
 /*
@@ -195,55 +139,16 @@ button {
 				<label for="name">Name:</label> <input id="response-name" type="text" name="name"> <br>
 				<label for="email">Email:</label> <input id="email" type="text" name="email"> <br>
 				<br>
-				<button>Send</button>
+				<button id="disappear">Send</button>
 			</form>
 			<br>
-			<h2>Thank you</h2>
 			<p id="response-area">
 
 			</p>
 	</div>
+	<div id="thanks">
+		<h2>Thank you</h2>
+	</div>
 
 </body>
 </html>
-<!--
-$(document).ready(function( ){
-
-	$("button").click(function(){
-		var response = $(#response).val();
-		$("#response-area").append(response);
-		loadresponse(response);
-		console.log("name:" + response[0]);
-	});
-	$("button").click(function(){
-		var response = "$("#response").val();
-		//$("#response-area").append(response);
-		loadresponse(response);
-		console.log("the response:" + response);
-	});
-
-	// object  json stringify
-	function loadresponse(response){
-
-		var responseInput = {
-			"text": resName }
-		}
-		$.ajax({
-			url: "http://localhost:5000/echo/",
-			type: "POST",
-			data: JSON.stringify(responseInput),
-			contentType: "application/json",
-			success: displayResponse
-	});
-
-	function displayResponse(data){
-
-		console.log("success!"+ data);
-		for(key in data){
-			//console.log(key+" "+data[key]);
-			$("#response-area").append(key+" "+data[key]+"<br>");
-		};
-	}
-	};
-});
--->
