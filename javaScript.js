@@ -1,17 +1,16 @@
 $(document).ready(function() {
-        $("#thanks").hide();
-		$('#magazine').turn({
-			display: 'double',
-			acceleration: true,
-			autoCenter: true,
-			gradients: !$.isTouch,
-			elevation: 50,
-			when: {
-				turned: function(e, page) {
-				/*console.log('Current view: ', $(this).turn('view'));*/
-				}
+    $("#thanks").hide();
+	$('#magazine').turn({
+		display: 'double',
+		acceleration: true,
+		autoCenter: true,
+		gradients: !$.isTouch,
+		elevation: 50,
+		when: {
+			turned: function(e, page) {
+			/*console.log('Current view: ', $(this).turn('view'));*/
 			}
-		});
+		}
 	});
 	/*checks if left or right arrow key*/
 	$(window).bind('keydown', function(e){
@@ -30,9 +29,7 @@ $(document).ready(function() {
         $("#thanks").show();
     });
 
-
-    /* Gets information */
-	$("button").click(function(){
+    $("button").click(function(){
 		var resName = $("#response-name").val();
 		var email = $("#response-email").val();
 
@@ -41,10 +38,9 @@ $(document).ready(function() {
 		$("#response-name").val("");
 		$("#response-email").val("");
 		console.log("name:" + resName);
-	});
-
-	function loadresponse(response){
-		
+    });
+    
+    function loadresponse(response){
 		var responseInput = {
 			"text": resName }
 		}
@@ -54,22 +50,24 @@ $(document).ready(function() {
 			data: JSON.stringify(responseInput),
 			contentType: "application/json",
 			success: displayResponse
-	});
-
-	function displayResponse(data)
+    });
+    
+    function displayResponse(data)
 	{
 		console.log("success!"+ data);
 		for(key in data){
 		//console.log(key+" "+data[key]);
-		$("#response-area").append(key+" "+data[key]+"<br>");
+        $("#response-area").append(key+" "+data[key]+"<br>");
+        };
     };
-    
-    /* hide contact form */
-    $("#button").click(function() {
+
+     /* hide contact form */
+     $("#button").click(function() {
         $("#contact").hide();
         $("#thanks").show();
     });
-	// Email web service 
+
+    // Email web service 
 	var unirest = require("unirest");
 
 	var req = unirest("POST", "https://fapimail.p.rapidapi.com/email/send");
@@ -94,6 +92,12 @@ $(document).ready(function() {
 
 		console.log(res.body);
     });
-    
+});
+	
 
-};
+	
+
+	
+    
+   
+	
