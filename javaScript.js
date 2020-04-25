@@ -62,7 +62,7 @@ $(document).ready(function() {
     };
 
      /* hide contact form */
-     $("#button").click(function() {
+    $("#button").click(function() {
         $("#contact").hide();
         $("#thanks").show();
     });
@@ -93,6 +93,10 @@ $(document).ready(function() {
 		console.log(res.body);
     });
 });
+    
+
+
+    /* Gets information */
 	
 
 	
